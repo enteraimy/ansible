@@ -4,4 +4,5 @@
   ansible.builtin.git:
     repo: https://github.com/enteraimy/ansible
     dest: /home/evgen/files/
+  register: foo_result  
 
