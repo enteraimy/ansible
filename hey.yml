@@ -14,4 +14,4 @@
 
   - name: Print a message
     ansible.builtin.debug:
-      var: foo_result
+      var: foo_result.changed
