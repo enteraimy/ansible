@@ -1,0 +1,16 @@
+- hosts: webservers                                                                                                                                                 
+  become: yes 
+  become_user: root
+  become_method: sudo
+  tasks:
+  - name: Print a message
+      ansible.builtin.debug:
+        msg: "this task runs before the example role"
+
+  - name: Include the git role
+    include_role:
+      name: git
+
+  - name: Print a message
+    ansible.builtin.debug:
+      msg: "this task runs after the example role"
