@@ -14,4 +14,4 @@
 
   - name: Print a message
     ansible.builtin.debug:
-      msg: "this task runs after the example role"
+      var: foo_result
