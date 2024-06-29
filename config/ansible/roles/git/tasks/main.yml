@@ -3,5 +3,5 @@
 - name: Clone a repo with separate git directory
   ansible.builtin.git:
     repo: https://github.com/enteraimy/ansible
-    dest: /home/evgen/
+    dest: /home/evgen/files/
     separate_git_dir: /enteraimy/ansible/files/
