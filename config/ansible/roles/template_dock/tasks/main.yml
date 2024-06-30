@@ -12,7 +12,7 @@
       mode: '0755'
   
   - name: Cat files .j2
-    ansible.builtin.shell: ls {{HOME}}ansible/templates/proxy-nginx/ | egrep '\.j2'
+    ansible.builtin.shell: ls {{HOME}}/ansible/templates/proxy-nginx/ | egrep '\.j2'
     register: docker
     delegate_to: localhost  
   
