@@ -9,26 +9,26 @@ services:
     depends_on:
       - php
     volumes:
-      - ./docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
-      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./html/:/var/www/html/
+      - {{ansible_env.HOME}}/files/conf.d/:/etc/nginx/conf.d/
+      - {{ansible_env.HOME}}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - {{ansible_env.HOME}}/files/html/:/var/www/html/
     networks:
       - frontend
       - backend
 
   php:
     build:
-      context: ./docker/php
+      context: {{ansible_env.HOME}}/files
     volumes:
-      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./html/:/var/www/html/
+      - {{ansible_env.HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
+      - {{ansible_env.HOME}}/files/html/:/var/www/html/
     networks:
       - backend
 
   mysql:
     image: mysql:5.7
     volumes:
-      - ./docker/mysql/data:/var/lib/mysql
+      - /etc/data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
     networks:
