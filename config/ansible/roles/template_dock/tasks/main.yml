@@ -5,6 +5,12 @@
       path: /home/evgen/dock
       state: absent
   
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /home/evgen/dock
+      state: directory
+      mode: '0755'
+  
   - name: Cat files .j2
     ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | egrep '\.j2'
     register: docker
