@@ -12,17 +12,17 @@
       mode: '0755'
   
   - name: Cat files .j2
-    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | egrep '\.j2'
+    ansible.builtin.shell: ls {{HOME}}ansible/templates/proxy-nginx/ | egrep '\.j2'
     register: docker
     delegate_to: localhost  
   
   - name: Generate dockerfiles
     ansible.builtin.template: 
-      src: /home/evgen/ansible/templates/proxy-nginx/{{ item }}
-      dest: /home/evgen/dock/{{ item | replace('.j2','') }}
+      src: {{HOME}}/ansible/templates/proxy-nginx/{{ item }}
+      dest: {{HOME}}/dock/{{ item | replace('.j2','') }}
     loop: "{{ docker.stdout_lines }}"
 
-  - name: Rebuild docker
-    community.docker.docker_compose_v2:
-      project_src: {{HOME}}/dock/ 
+  #- name: Rebuild docker
+   # community.docker.docker_compose_v2:
+    #  project_src: {{HOME}}/dock/ 
       
