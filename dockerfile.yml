@@ -23,6 +23,9 @@
          
   tasks:
 
+  - name: get homedir
+    ansible.builtin.shell: echo ~{{ remote_user }}
+    register: HOME
   - name: generate
     include_role:
       name: template_dock
