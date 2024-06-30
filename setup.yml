@@ -20,11 +20,6 @@
       private: false
       default: 127.0.0.1
 
-    - name: ports
-      prompt: Choice the port
-      private: false
-      default: 80
-
     - name: file
       prompt: Allow file transfer?
       private: false
