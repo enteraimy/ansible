@@ -1,12 +1,22 @@
 ---
 
   - name: Cat files .js
-    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | grep *.js
+    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/*.js
+    register: docker
     delegate_to: localhost
+
+  - name: Create the list of src
+    set_fact:
+      list_dock: "{{ docker.stdout_lines.split() }}"
+
+  - name: Create the list of dest
+    set_fact:
+      list_dock: "{{ docker.split() }}"    
   
   - name: Generate dockerfiles
     template: 
-      src: "{{ items.src }}"
-      dest: "{{ item.dest }}"
+      src: /home/evgen/ansible/templates/proxy-nginx/"{{ list_dock.items }}"
+      dest: /home/evgen/"{{ list_dock }}"
+    with_items:
+      "{{ list_dock }}"
       
-      /home/evgen/ansible/templates/proxy-nginx/
