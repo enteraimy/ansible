@@ -8,11 +8,7 @@
 
   #- name: Create the list of src
    # set_fact:
-    #  list_dock: "{{ docker.stdout_lines.split() }}"
-
-  - name: Create the list of dest
-    set_fact:
-      list_dock: "{{ docker.split() }}"    
+    #  list_dock: "{{ docker.stdout_lines.split() }}"    
   
   - name: Generate dockerfiles
     template: 
