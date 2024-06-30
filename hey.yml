@@ -3,6 +3,15 @@
   become: yes 
   become_user: root
   become_method: sudo
+  vars_prompt:
+
+    - name: install
+      prompt: Install docker?
+      private: false
+
+    - name: password
+      prompt: What is your password?
+      
   tasks:
   - name: Print a message
     ansible.builtin.debug:
