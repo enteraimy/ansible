@@ -2,19 +2,21 @@ version: '2.0'
 
 services:
 
-  proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - {{ports}}:80
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    networks:
+  #proxy:
+   # image: jwilder/nginx-proxy
+    #ports:
+     # - {{ports}}:80
+    #volumes:
+     # - /var/run/docker.sock:/tmp/docker.sock:ro
+    #networks:
       - proxy
   
   nginx:
     image: nginx
     environment:
       - VIRTUAL_HOST={{ site }}
+    ports:
+      - {{ports}}:80
     depends_on:
       - php
     volumes:
