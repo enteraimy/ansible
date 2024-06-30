@@ -6,17 +6,17 @@
   become_method: sudo
   vars_prompt:
 
-    - name: ports
-      prompt: Choice the port
+    - name: root_dir
+      prompt: Choice the directory to files of website
       private: false
-      default: 80
+      default: /var/www/html/
       
-    - name: site
-      prompt: Choice the site name
+    - name: cache_st
+      prompt: Choise the cache time for static
       private: false
-      default: localhost   
+      default: 180h   
 
-    - name: base
+    - name: cache_
       prompt: Choice the url to phpadmin panel
       private: false
       default: 127.0.0.1     
