@@ -36,7 +36,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     environment:
-      - VIRTUAL_HOST={{ base }}
+      - VIRTUAL_HOST={{ site }}
       - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=root
