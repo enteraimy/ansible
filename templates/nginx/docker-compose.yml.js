@@ -6,6 +6,8 @@ services:
     image: nginx
     depends_on:
       - php
+    ports:
+      - {{ port }}:80
     volumes:
       - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
       - ./html/:/var/www/html/
