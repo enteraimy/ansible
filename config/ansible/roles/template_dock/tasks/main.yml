@@ -11,7 +11,7 @@
     #  list_dock: "{{ docker.stdout_lines.split() }}"    
   
   - name: Generate dockerfiles
-    template: 
+    ansible.builtin.template: 
       src: /home/evgen/ansible/templates/proxy-nginx/"{{ item }}"
       dest: /home/evgen/"{{ item }}"
     loop: "{{ docker.stdout_lines }}"
