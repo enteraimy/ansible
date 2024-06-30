@@ -2,6 +2,15 @@ version: '2.0'
 
 services:
 
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - {{ports}}:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy
+  
   nginx:
     image: nginx
     environment:
@@ -13,7 +22,7 @@ services:
       - {{HOME}}/nginx/nginx.conf:/etc/nginx/nginx.conf
       - {{HOME}}/files/html/:/var/www/html/
     networks:
-      - frontend
+      - proxy
       - backend
 
   php:
@@ -42,12 +51,11 @@ services:
       - PMA_USER=root
       - PMA_PASSWORD=root
     networks:
-      - frontend
+      - proxy
       - backend
 
 networks:
-  frontend:
-    external: 
-      name: proxy_proxy
+  proxy:
+    driver: bridge
   backend:
 
