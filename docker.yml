@@ -5,4 +5,5 @@
   tasks:
   - name: Include the docker_install role
     include_role:
-      name: git
+      name: docker_install
+
