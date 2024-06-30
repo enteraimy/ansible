@@ -46,4 +46,4 @@
       name: nginx
   - name: docker generate and up
     include_role:
-      name: docker_template    
+      name: template_dock    
