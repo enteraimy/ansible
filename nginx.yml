@@ -1,0 +1,28 @@
+---
+
+- hosts: webservers                                                                                                                                                 
+  become: yes 
+  become_user: root
+  become_method: sudo
+  vars_prompt:
+
+    - name: ports
+      prompt: Choice the port
+      private: false
+      default: 80
+      
+    - name: site
+      prompt: Choice the site name
+      private: false
+      default: localhost   
+
+    - name: base
+      prompt: Choice the url to phpadmin panel
+      private: false
+      default: 127.0.0.1     
+         
+  tasks:
+
+  - name: generate
+    include_role:
+      name: template_dock
