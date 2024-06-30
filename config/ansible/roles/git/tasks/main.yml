@@ -1,8 +1,7 @@
 ---
 
-- name: Clone a repo with separate git directory
+- name: Clone a repo from git directory
   ansible.builtin.git:
-    repo: https://github.com/enteraimy/ansible/files
+    repo: https://github.com/enteraimy/php
     dest: /home/evgen/files/
-  register: foo_result  
 
