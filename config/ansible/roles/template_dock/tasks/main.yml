@@ -27,4 +27,4 @@
       project_src: "{{ HOME }}/dock/"
       files:
       - docker-compose.yml
-    register: build
+    register: info
