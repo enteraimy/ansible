@@ -19,10 +19,10 @@ http {
 	# server_names_hash_bucket_size 64;
 	# server_name_in_redirect off;
 
-  {{ client }}sendfile on;
-  {{ client }}tcp_nopush on;
-  {{ client }}client_max_body_size 32m;
-  {{ client }}client_body_buffer_size 128k;
+        {{ client }}sendfile on;
+        {{ client }}tcp_nopush on;
+        {{ client }}client_max_body_size 32m;
+        {{ client }}client_body_buffer_size 128k;
   
 	include /etc/nginx/mime.types;
 	default_type application/octet-stream;
