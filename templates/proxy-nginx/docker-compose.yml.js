@@ -5,11 +5,11 @@ services:
   nginx:
     image: nginx
     environment:
-      - VIRTUAL_HOST=site.local
+      - VIRTUAL_HOST={{ site }}
     depends_on:
       - php
     volumes:
-      - ./docker/nginx/conf.d/default.nginx:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/conf.d/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./html/:/var/www/html/
     networks:
       - frontend
@@ -36,7 +36,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     environment:
-      - VIRTUAL_HOST=phpmyadmin.local
+      - VIRTUAL_HOST={{ base }}
       - PMA_HOST=mysql
       - PMA_USER=root
       - PMA_PASSWORD=root
