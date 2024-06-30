@@ -2,15 +2,6 @@ version: '3.0'
 
 services:
 
-  proxy:
-    image: jwilder/nginx-proxy
-    ports:
-      - 80:80
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-    networks:
-      - proxy
-
   nginx:
     image: nginx
     environment:
@@ -55,6 +46,7 @@ services:
 
 networks:
   frontend:
-  proxy:
+    external: 
+      name: proxy_proxy
   backend:
 
