@@ -4,4 +4,5 @@
   ansible.builtin.git:
     repo: https://github.com/enteraimy/php
     dest: "{{ HOME }}/files/"
+    force: true
 
