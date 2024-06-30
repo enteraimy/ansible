@@ -24,5 +24,8 @@
 
   - name: Rebuild docker
     community.docker.docker_compose_v2:
-      project_src: "{{ HOME }}/dock/" 
-      
+      project_src: "{{ HOME }}/dock/docker-composeproxy.yml" 
+
+  - name: Rebuild docker
+    community.docker.docker_compose_v2:
+      project_src: "{{ HOME }}/dock/docker-compose.yml"     
