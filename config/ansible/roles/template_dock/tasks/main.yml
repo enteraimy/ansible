@@ -1,18 +1,18 @@
 ---
 
   
-  - name: Cat files .js
+  - name: Cat files .j2
     ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | egrep '\.j2'
     register: docker
     delegate_to: localhost
-
-  - name: Create the list of src
+  
+  - name: Create the list of dst
     ansible.builtin.debug:
       var: docker.stdout_lines  
   
   - name: Generate dockerfiles
     ansible.builtin.template: 
       src: /home/evgen/ansible/templates/proxy-nginx/{{ item }}
-      dest: /home/evgen/{{ item }}
+      dest: /home/evgen/{{ item | replace('.j2''') }}
     loop: "{{ docker.stdout_lines }}"
       
