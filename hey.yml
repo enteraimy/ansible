@@ -5,22 +5,14 @@
   become_method: sudo
   vars_prompt:
 
-    - name: install
-      prompt: Install docker?
+    - name: gen_dock
+      prompt: Generate docker? (default no)
       private: false
-
-    - name: password
-      prompt: What is your password?
+      default: no
       
   tasks:
-  - name: Print a message
-    ansible.builtin.debug:
-      msg: "this task runs before the example role"
 
-  - name: Include the git role
+  - name: generate
     include_role:
-      name: git
-
-  - name: Print a message
-    ansible.builtin.debug:
-      var: foo_result.changed
+      name: template_dock
+    when: gen_dock != 'no'
