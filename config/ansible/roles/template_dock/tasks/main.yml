@@ -2,7 +2,7 @@
 
   
   - name: Cat files .js
-    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/*.js
+    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/*.j2
     register: docker
     delegate_to: localhost
 
