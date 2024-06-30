@@ -1,0 +1,12 @@
+---
+
+  - name: Cat files .js
+    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | grep *.js
+    delegate_to: localhost
+  
+  - name: Generate dockerfiles
+    template: 
+      src: "{{ items.src }}"
+      dest: "{{ item.dest }}"
+      
+      /home/evgen/ansible/templates/proxy-nginx/
