@@ -9,6 +9,18 @@
       prompt: Generate docker? (default no)
       private: false
       default: no
+
+    - name: port
+      prompt: Choice the port
+      private: false
+      default: 80
+      when: gen_dock != 'no'
+
+    - name: site
+      prompt: Choice the port
+      private: false
+      default: localhost   
+      when: gen_dock != 'no'
       
   tasks:
 
