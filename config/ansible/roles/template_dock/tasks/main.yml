@@ -1,13 +1,25 @@
 ---
 
+ vars_prompt:
+
+ - name: port
+   prompt: Choice the port
+   private: false
+   default: 80
+
+ - name: site
+   prompt: Choice the port
+   private: false
+   default: localhost  
+  
   - name: Cat files .js
     ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/*.js
     register: docker
     delegate_to: localhost
 
-  - name: Create the list of src
-    set_fact:
-      list_dock: "{{ docker.stdout_lines.split() }}"
+  #- name: Create the list of src
+   # set_fact:
+    #  list_dock: "{{ docker.stdout_lines.split() }}"
 
   - name: Create the list of dest
     set_fact:
@@ -15,8 +27,8 @@
   
   - name: Generate dockerfiles
     template: 
-      src: /home/evgen/ansible/templates/proxy-nginx/"{{ list_dock.items }}"
-      dest: /home/evgen/"{{ list_dock }}"
+      src: /home/evgen/ansible/templates/proxy-nginx/"{{ docker.stdout_lines }}"
+      dest: /home/evgen/"{{ docker.stdout_lines }}"
     with_items:
-      "{{ list_dock }}"
+      "{{ docker.stdout_lines }}"
       
