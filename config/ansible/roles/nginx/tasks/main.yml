@@ -23,3 +23,6 @@
     ansible.builtin.template: 
       src: /home/evgen/ansible/templates/nginx_conf/nginx.conf.j2
       dest: /home/evgen/nginx/nginx.conf
+    register: out
+
+    
