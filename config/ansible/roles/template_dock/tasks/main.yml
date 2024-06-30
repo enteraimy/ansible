@@ -18,8 +18,8 @@
   
   - name: Generate dockerfiles
     ansible.builtin.template: 
-      src: {{HOME}}/ansible/templates/proxy-nginx/{{ item }}
-      dest: {{HOME}}/dock/{{ item | replace('.j2','') }}
+      src: '{{ HOME }}'/ansible/templates/proxy-nginx/{{ item }}
+      dest: '{{ HOME }}'/dock/{{ item | replace('.j2','') }}
     loop: "{{ docker.stdout_lines }}"
 
   #- name: Rebuild docker
