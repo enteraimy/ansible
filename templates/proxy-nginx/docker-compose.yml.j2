@@ -9,9 +9,9 @@ services:
     depends_on:
       - php
     volumes:
-      - {{ansible_env.HOME}}/files/conf.d/:/etc/nginx/conf.d/
-      - {{ansible_env.HOME}}/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - {{ansible_env.HOME}}/files/html/:/var/www/html/
+      - {{HOME}}/files/conf.d/:/etc/nginx/conf.d/
+      - {{HOME}}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - {{HOME}}/files/html/:/var/www/html/
     networks:
       - frontend
       - backend
@@ -20,8 +20,8 @@ services:
     build:
       context: {{ansible_env.HOME}}/files
     volumes:
-      - {{ansible_env.HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
-      - {{ansible_env.HOME}}/files/html/:/var/www/html/
+      - {{HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
+      - {{HOME}}/files/html/:/var/www/html/
     networks:
       - backend
 
