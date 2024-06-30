@@ -20,4 +20,4 @@
 
   - name: generate
     include_role:
-      name: template_nginx
+      name: nginx
