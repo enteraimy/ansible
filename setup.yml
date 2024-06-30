@@ -5,26 +5,45 @@
   become_method: sudo
   vars_prompt:
 
-    - name: gen_dock
-      prompt: Generate docker? (default no)
-      private: false
-      default: no
-
     - name: ports
       prompt: Choice the port
       private: false
       default: 80
       
-
     - name: site
-      prompt: Choice the port
+      prompt: Choice the site name
       private: false
       default: localhost   
+
+    - name: base
+      prompt: Choice the url to phpadmin panel
+      private: false
+      default: 127.0.0.1
+
+    - name: ports
+      prompt: Choice the port
+      private: false
+      default: 80
+
+    - name: file
+      prompt: Allow file transfer?
+      private: false
+      default: "no"
+      
+    - name: compression
+      prompt: Allow gzip compression?
+      private: false
+      default: "no"   
       
       
   tasks:
 
-  - name: generate
+  - name: git role
     include_role:
-      name: template_dock
-    when: gen_dock != 'no'
+      name: git
+  - name: nginx generate
+    include_role:
+      name: nginx
+  - name: docker generate and up
+    include_role:
+      name: docker_template    
