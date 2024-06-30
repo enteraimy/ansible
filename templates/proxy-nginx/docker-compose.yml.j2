@@ -20,7 +20,7 @@ services:
     build:
       context: {{HOME}}/files
     volumes:
-      - {{HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
+      #- {{HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
       - {{HOME}}/files/html/:/var/www/html/
     networks:
       - backend
