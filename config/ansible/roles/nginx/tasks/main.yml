@@ -1,1 +1,25 @@
-
+- name: Recursively remove directory
+    ansible.builtin.file:
+      path: /home/evgen/dock
+      state: absent
+  
+  - name: Create a directory if it does not exist
+    ansible.builtin.file:
+      path: /home/evgen/dock
+      state: directory
+      mode: '0755'
+  
+  - name: Cat files .j2
+    ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/ | egrep '\.j2'
+    register: docker
+    delegate_to: localhost
+  
+  - name: Create the list of dst
+    ansible.builtin.debug:
+      var: docker.stdout_lines  
+  
+  - name: Generate dockerfiles
+    ansible.builtin.template: 
+      src: /home/evgen/ansible/templates/proxy-nginx/{{ item }}
+      dest: /home/evgen/dock/{{ item | replace('.j2','') }}
+    loop: "{{ docker.stdout_lines }}"
