@@ -10,7 +10,7 @@
  - name: site
    prompt: Choice the port
    private: false
-   default: localhost  
+   default: localhost 
   
   - name: Cat files .js
     ansible.builtin.shell: ls /home/evgen/ansible/templates/proxy-nginx/*.js
