@@ -6,23 +6,18 @@
   become_method: sudo
   vars_prompt:
 
-    - name: root_dir
-      prompt: Choice the directory to files of website
+    - name: file
+      prompt: Allow file transfer?
       private: false
-      default: /var/www/html/
+      default: no
       
-    - name: cache_st
-      prompt: Choise the cache time for static
+    - name: compression
+      prompt: Allow gzip compression?
       private: false
-      default: 180h   
-
-    - name: cache_
-      prompt: Choice the url to phpadmin panel
-      private: false
-      default: 127.0.0.1     
+      default: no   
          
   tasks:
 
   - name: generate
     include_role:
-      name: template_dock
+      name: template_nginx
