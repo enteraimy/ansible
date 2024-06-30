@@ -41,4 +41,10 @@
       name: nginx
   - name: docker generate and up
     include_role:
-      name: template_dock    
+      name: template_dock
+
+  - name: Restart services
+    community.docker.docker_compose_v2:
+      project_src: "{{ HOME }}/dock/"
+      state: restarted
+    when: out.changed == true and buld.changed == true    
