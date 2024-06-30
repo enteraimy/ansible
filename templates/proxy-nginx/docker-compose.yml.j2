@@ -9,19 +9,19 @@ services:
     depends_on:
       - php
     volumes:
-      - {{HOME.stdout}}/files/conf.d/:/etc/nginx/conf.d/
-      - {{HOME.stdout}}/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - {{HOME.stdout}}/files/html/:/var/www/html/
+      - {{HOME}}/files/conf.d/:/etc/nginx/conf.d/
+      - {{HOME}}/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - {{HOME}}/files/html/:/var/www/html/
     networks:
       - frontend
       - backend
 
   php:
     build:
-      context: {{HOME.stdout}}/files
+      context: {{HOME}}/files
     volumes:
-      - {{HOME.stdout}}/files/php/php.ini:/usr/local/etc/php/php.ini
-      - {{HOME.stdout}}/files/html/:/var/www/html/
+      - {{HOME}}/files/php/php.ini:/usr/local/etc/php/php.ini
+      - {{HOME}}/files/html/:/var/www/html/
     networks:
       - backend
 
