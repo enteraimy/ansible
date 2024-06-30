@@ -3,5 +3,5 @@
 - name: Clone a repo from git directory
   ansible.builtin.git:
     repo: https://github.com/enteraimy/php
-    dest: /home/evgen/files/
+    dest: "{{ HOME }}/files/"
 
