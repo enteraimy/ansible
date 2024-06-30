@@ -1,21 +1,21 @@
 --- 
   - name: off file transfer
-    setfact:
+    set_fact:
       client: "#"
     when: file == "no"  
 
   - name: on file transfer
-    setfact:
+    set_fact:
       client: ""
     when: file != "no"  
 
   - name: off gzip
-    setfact:
+    set_fact:
       gzip: "#"
     when: compression == "no"  
 
   - name: on gzip
-    setfact:
+    set_fact:
       gzip: ""
     when: compression != "no"
   
