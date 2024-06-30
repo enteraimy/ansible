@@ -9,12 +9,12 @@
     - name: file
       prompt: Allow file transfer?
       private: false
-      default: no
+      default: "no"
       
     - name: compression
       prompt: Allow gzip compression?
       private: false
-      default: no   
+      default: "no"   
          
   tasks:
 
