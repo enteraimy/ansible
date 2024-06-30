@@ -12,7 +12,7 @@
   
   - name: Generate dockerfiles
     ansible.builtin.template: 
-      src: /home/evgen/ansible/templates/proxy-nginx/"{{ item }}"
-      dest: /home/evgen/"{{ item }}"
+      src: /home/evgen/ansible/templates/proxy-nginx/{{ item }}
+      dest: /home/evgen/{{ item }}
     loop: "{{ docker.stdout_lines }}"
       
