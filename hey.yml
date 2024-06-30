@@ -10,7 +10,7 @@
       private: false
       default: no
 
-    - name: port
+    - name: ports
       prompt: Choice the port
       private: false
       default: 80
