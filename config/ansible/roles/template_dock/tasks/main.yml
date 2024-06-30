@@ -6,9 +6,9 @@
     register: docker
     delegate_to: localhost
 
-  #- name: Create the list of src
-   # set_fact:
-    #  list_dock: "{{ docker.stdout_lines.split() }}"    
+  - name: Create the list of src
+    ansible.builtin.debug:
+      var: docker.stdout_lines  
   
   - name: Generate dockerfiles
     ansible.builtin.template: 
