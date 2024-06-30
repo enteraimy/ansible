@@ -12,8 +12,8 @@
   
   - name: Generate dockerfiles
     template: 
-      src: /home/evgen/ansible/templates/proxy-nginx/"{{ docker.stdout_lines }}"
-      dest: /home/evgen/"{{ docker.stdout_lines }}"
+      src: /home/evgen/ansible/templates/proxy-nginx/{{ docker.stdout_lines }}
+      dest: /home/evgen/{{ docker.stdout_lines }}
     with_items:
       "{{ docker.stdout_lines }}"
       
